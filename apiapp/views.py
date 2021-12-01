@@ -16,9 +16,6 @@ class ListItemAPIView(generics.ListAPIView):
         return Item.objects.all()
 
 
-@method_decorator(name='post', decorator=swagger_auto_schema(
-    description='''Endpoint for sellers to view all items they have put up for sale. Requires token authentication in this format: "Bearer <access_token returned by the login endpoint>"'''
-))
 class CreateOrderOnCheckoutAPIView(generics.CreateAPIView):
     serializer_class = CreateOrderSerializer
 

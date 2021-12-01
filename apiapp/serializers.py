@@ -1,3 +1,4 @@
+from os import write
 from .models import Item, Order, OrderItem
 from rest_framework import serializers
 
@@ -11,8 +12,8 @@ class ListitemsSerializer(serializers.ModelSerializer):
 
 class CreateOrderSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    order_item= serializers.ListField(child=serializers.DictField(), write_only=True)
-    total_order_cost = serializers.DecimalField( decimal_places=2, max_digits=12)
+    order_item= serializers.ListField(child=serializers.DictField(child=serializers.IntegerField()), write_only=True)
+    total_order_cost = serializers.DecimalField(decimal_places=2, max_digits=12)
 
     def create(self, validated_data):
         order = Order.objects.create(total_order_cost=validated_data['total_order_cost'])
