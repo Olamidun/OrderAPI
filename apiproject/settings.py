@@ -28,8 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = os.getenv('DJANGO_DEBUG_VALUE', False)
+# DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG_VALUE', False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -78,10 +78,12 @@ TEMPLATES = [
     },
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     'http://127.0.0.1:3000',
+# ]
+CORS_ALLOW_ALL_ORIGINS: True
+
 CORS_ALLOW_CREDENTIALS = False
 
 WSGI_APPLICATION = 'apiproject.wsgi.application'
