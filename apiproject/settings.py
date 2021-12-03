@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 # DEBUG = os.getenv('DJANGO_DEBUG_VALUE', False)
 
 ALLOWED_HOSTS = ['*']
@@ -46,11 +46,11 @@ INSTALLED_APPS = [
     'apiapp.apps.ApiappConfig',
     'rest_framework',
     'drf_yasg',
-    # 'corsheaders'
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
-    "apiapp.cors_middleware.CorsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -78,8 +78,11 @@ TEMPLATES = [
     },
 ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+]
+CORS_ALLOW_CREDENTIALS = False
 
 WSGI_APPLICATION = 'apiproject.wsgi.application'
 
