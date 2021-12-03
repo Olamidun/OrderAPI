@@ -84,7 +84,8 @@ TEMPLATES = [
 # ]
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_CREDENTIALS = False
+
+CORS_ALLOW_CREDENTIALS = True
 
 WSGI_APPLICATION = 'apiproject.wsgi.application'
 
