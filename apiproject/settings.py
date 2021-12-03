@@ -82,7 +82,7 @@ TEMPLATES = [
 #     'http://localhost:3000',
 #     'http://127.0.0.1:3000',
 # ]
-CORS_ALLOW_ALL_ORIGINS: True
+CORS_ORIGIN_ALLOW_ALL: True
 
 CORS_ALLOW_CREDENTIALS = False
 
@@ -102,6 +102,7 @@ DATABASES = {
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Password validation
